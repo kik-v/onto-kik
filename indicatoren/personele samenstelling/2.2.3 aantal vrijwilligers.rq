@@ -1,3 +1,4 @@
+
 PREFIX vph: <https://purl.org/ozo/vph#>
 PREFIX kik: <https://purl.org/ozo/kik#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
@@ -6,12 +7,12 @@ SELECT (COUNT(DISTINCT(?vrijwilliger)) AS ?aantal_vrijwilligers)
 
 WHERE {
     #Definieer periode
-    BIND("2018-01-01"^^xsd:date AS ?start_periode)
-    BIND("2018-12-31"^^xsd:date AS ?eind_periode)
+    BIND("2020-01-01"^^xsd:date AS ?start_periode)
+    BIND("2020-12-31"^^xsd:date AS ?eind_periode)
     
     #Selecteer alle vrijwilligersovereenkomsten
     ?vrijwilliger a vph:Human ;
-                  kik:hasAgreement ?vrijwilligersovereenkomst .
+                  kik:heeftWerkOvereenkomst ?vrijwilligersovereenkomst .
     ?vrijwilligersovereenkomst a kik:VrijwilligersOvereenkomst;
                                kik:startDatum ?start_overeenkomst ;
                                kik:eindDatum ?eind_overeenkomst .
