@@ -1,42 +1,36 @@
-PREFIX vph: <https://purl.org/ozo/vph#>
 PREFIX kik: <https://purl.org/ozo/kik#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX vph: <http://www.zinl.nl/ontologies/VPH-domain-ontology#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 SELECT ?start_periode ?eind_periode (SUM(?aantal) AS ?totaal_aantal) ?eenheid
 
-WHERE { 
-    #definieer periode waarin overeenkomst geldig moet zijn
-    BIND("2018-01-01"^^xsd:date AS ?start_periode)
-    BIND("2018-12-31"^^xsd:date AS ?eind_periode)
-  
-    #Selecteer alle functies die kik:ZorgverlenerFunctie zijn
-    ?functie a kik:ZorgverlenerFunctie ;
-             kik:startDatum ?start_functie .
-    OPTIONAL {?functie kik:eindDatum ?eind_functie}
+WHERE {
+    {
+        #selecteer werknemers met een arbeidsovereenkomst of oproepovereenkomst in de gevraagde periode
+        SELECT DISTINCT ?start_periode ?eind_periode ?werknemer
+        WHERE {
+            BIND ("2020-01-01"^^xsd:date AS ?start_periode)
+            BIND ("2020-12-31"^^xsd:date AS ?eind_periode)  
+            ?overeenkomst a kik:ArbeidsOvereenkomst ;
+                       kik:startDatum ?start_overeenkomst .
+            OPTIONAL {?overeenkomst kik:eindDatum ?eind_overeenkomst}
+            FILTER(?start_overeenkomst <= ?eind_periode && ((?eind_overeenkomst >= ?start_periode) || (!BOUND(?eind_overeenkomst))))
+            ?werknemer kik:heeftWerkOvereenkomst ?overeenkomst .
+            ?overeenkomst kik:bijbehorendeFunctie/a kik:ZorgverlenerFunctie . #Alleen overeenkomsten met zorgverlener functies
+         }
+    }
+    ?werknemer kik:heeftGewerkt ?periode .
+    ?periode kik:startDatum ?start_gewerkt ;
+             kik:eindDatum ?eind_gewerkt ;
+             kik:gewerkteUren ?uren_gewerkt .
     
-    #Alleen functies in gevraagde periode
-    FILTER (?start_functie <= ?eind_periode && (!BOUND(?eind_functie) || ?eind_functie >= ?start_periode))
-    
-    #Corrigeer wanneer start of eind van de functie buiten de gevraagde periode valt
-    BIND(IF(?start_periode > ?start_functie, ?start_periode, ?start_functie) AS ?start_functie_corr)
-    BIND(IF((?eind_periode < ?eind_functie) || !BOUND(?eind_functie), ?eind_periode, ?eind_functie) AS ?eind_functie_corr)
-    
-    #Selecteer gewerkte periodes die horen bij de functie, via de werkovereenkomst
-    ?arbeidsovereenkomst a kik:WerkOvereenkomst ;
-                         kik:hasDescription ?functie ;
-                         kik:hasDescription ?gewerkte_periode .
-    
-    ?gewerkte_periode a kik:GewerktePeriode ;
-                      kik:startDatum ?start_gewerkt ;
-                      kik:eindDatum ?eind_gewerkt ;
-                      kik:gewerkteUren ?uren_gewerkt .
-    
-    FILTER ((?start_gewerkt >= ?start_functie_corr) && (?eind_gewerkt <= ?eind_functie_corr))
-    
+    #Alleen gewerktmeldingen binnen de gevraagde periode
+    FILTER(?start_gewerkt >= ?start_periode && ?eind_gewerkt <= ?eind_periode)
+
     #Rapporteer op alle eenheden per week
     ?e a vph:UnitOfWorkload ;
-       kik:hasNumericalValue ?corr_factor ;
+       kik:numeriekeWaarde ?corr_factor ;
        kik:hasDenominatorQualityValue vph:Week ;
        rdfs:label ?eenheid .
     
@@ -45,6 +39,5 @@ WHERE {
         IF((DAY(?eind_periode) - DAY(?start_periode)) < 29, (DAY(?eind_periode) - DAY(?start_periode)), 29) + 1
         AS ?dagen_periode)
     BIND (?uren_gewerkt/(?dagen_periode/360*47)/?corr_factor AS ?aantal)
-   
-} 
+}
 GROUP BY ?start_periode ?eind_periode ?eenheid
