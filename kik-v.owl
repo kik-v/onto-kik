@@ -1,11 +1,10 @@
 <?xml version="1.0"?>
 <rdf:RDF xmlns="https://purl.org/ozo/kik#"
-     xml:base="https://purl.org/ozo/kik#"
+     xml:base="https://purl.org/ozo/kik"
      xmlns:dc="http://purl.org/dc/elements/1.1/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:vph="https://purl.org/ozo/vph#"
-     xmlns:kik="https://purl.org/ozo/kik#"
+     xmlns:vph="http://www.zinl.nl/ontologies/VPH-domain-ontology#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:foaf="http://xmlns.com/foaf/0.1/"
@@ -13,11 +12,12 @@
      xmlns:skos="http://www.w3.org/2004/02/skos/core#"
      xmlns:terms="http://purl.org/dc/terms/">
     <owl:Ontology rdf:about="https://purl.org/ozo/kik#">
+        <owl:versionIRI rdf:resource="https://purl.org/ozo/kik#/0.5.0"/>
         <owl:imports rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology_Version0.1"/>
         <dc:creator>Marc Nieuwland</dc:creator>
         <dc:title xml:lang="nl">Keteninformatie Kwaliteit Verpleeghuiszorg - Ontologie</dc:title>
         <terms:license rdf:resource="https://mit-license.org"/>
-        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.31</owl:versionInfo>
+        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.5</owl:versionInfo>
     </owl:Ontology>
     
 
@@ -81,21 +81,21 @@
     
 
 
-    <!-- https://purl.org/ozo/vph#definitionSource -->
+    <!-- http://www.zinl.nl/ontologies/VPH-domain-ontology#definitionSource -->
 
-    <owl:AnnotationProperty rdf:about="https://purl.org/ozo/vph#definitionSource"/>
+    <owl:AnnotationProperty rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#definitionSource"/>
     
 
 
-    <!-- https://purl.org/ozo/vph#editorNote -->
+    <!-- http://www.zinl.nl/ontologies/VPH-domain-ontology#editorNote -->
 
-    <owl:AnnotationProperty rdf:about="https://purl.org/ozo/vph#editorNote"/>
+    <owl:AnnotationProperty rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#editorNote"/>
     
 
 
-    <!-- https://purl.org/ozo/vph#editorialDefinition -->
+    <!-- http://www.zinl.nl/ontologies/VPH-domain-ontology#editorialDefinition -->
 
-    <owl:AnnotationProperty rdf:about="https://purl.org/ozo/vph#editorialDefinition"/>
+    <owl:AnnotationProperty rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#editorialDefinition"/>
     
 
 
@@ -127,9 +127,9 @@
     
 
 
-    <!-- https://purl.org/ozo/vph#hasRole -->
+    <!-- http://www.zinl.nl/ontologies/VPH-domain-ontology#hasRole -->
 
-    <rdf:Description rdf:about="https://purl.org/ozo/vph#hasRole">
+    <rdf:Description rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#hasRole">
         <rdfs:label xml:lang="nl">heeft rol</rdfs:label>
         <skos:closeMatch rdf:resource="http://purl.obolibrary.org/obo/BFO_0000023"/>
         <skos:definition xml:lang="nl">Verwijst naar de rol van een subject die op een bepaald moment in de tijd geldig is.</skos:definition>
@@ -141,9 +141,18 @@
 
     <owl:ObjectProperty rdf:about="https://purl.org/ozo/kik#agreementOf">
         <owl:inverseOf rdf:resource="https://purl.org/ozo/kik#hasAgreement"/>
-        <rdfs:domain rdf:resource="https://purl.org/ozo/vph#Agreement"/>
+        <rdfs:domain rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Agreement"/>
         <rdfs:label xml:lang="nl">overeenkomst van</rdfs:label>
         <skos:definition xml:lang="nl">Geeft van een overeenkomst aan wie de eigenaar is van die overeenkomst.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://purl.org/ozo/kik#bijbehorendeFunctie -->
+
+    <owl:ObjectProperty rdf:about="https://purl.org/ozo/kik#bijbehorendeFunctie">
+        <rdfs:range rdf:resource="https://purl.org/ozo/kik#Functie"/>
+        <rdfs:label xml:lang="nl">bijbehorende functie</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -151,9 +160,27 @@
     <!-- https://purl.org/ozo/kik#bijbehorendeOpenbareRuimte -->
 
     <owl:ObjectProperty rdf:about="https://purl.org/ozo/kik#bijbehorendeOpenbareRuimte">
-        <rdfs:range rdf:resource="https://purl.org/ozo/vph#PublicArea"/>
+        <rdfs:range rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#PublicArea"/>
         <rdfs:label xml:lang="nl">bijbehorende openbare ruimte</rdfs:label>
         <skos:exactMatch rdf:resource="http://bag.basisregistraties.overheid.nl/def/bag#bijbehorendeWoonplaats"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://purl.org/ozo/kik#bijbehorendeVerzuimPeriode -->
+
+    <owl:ObjectProperty rdf:about="https://purl.org/ozo/kik#bijbehorendeVerzuimPeriode">
+        <rdfs:range rdf:resource="https://purl.org/ozo/kik#VerzuimPeriode"/>
+        <rdfs:label xml:lang="nl">bijbehorende verzuimperiode</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://purl.org/ozo/kik#bijbehorendeWerkPeriode -->
+
+    <owl:ObjectProperty rdf:about="https://purl.org/ozo/kik#bijbehorendeWerkPeriode">
+        <rdfs:range rdf:resource="https://purl.org/ozo/kik#GewerktePeriode"/>
+        <rdfs:label xml:lang="nl">bijbehorende werkperiode</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -161,7 +188,7 @@
     <!-- https://purl.org/ozo/kik#bijbehorendeWoonplaats -->
 
     <owl:ObjectProperty rdf:about="https://purl.org/ozo/kik#bijbehorendeWoonplaats">
-        <rdfs:range rdf:resource="https://purl.org/ozo/vph#VillageOrCity"/>
+        <rdfs:range rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#VillageOrCity"/>
         <rdfs:label xml:lang="nl">bijbehorende woonplaats</rdfs:label>
         <skos:exactMatch rdf:resource="https://bag.basisregistraties.overheid.nl/datamodel#bijbehorendeWoonplaats"/>
     </owl:ObjectProperty>
@@ -171,7 +198,7 @@
     <!-- https://purl.org/ozo/kik#hasAgreement -->
 
     <owl:ObjectProperty rdf:about="https://purl.org/ozo/kik#hasAgreement">
-        <rdfs:range rdf:resource="https://purl.org/ozo/vph#Agreement"/>
+        <rdfs:range rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Agreement"/>
         <rdfs:label xml:lang="nl">heeft overeenkomst</rdfs:label>
         <skos:definition xml:lang="nl">Legt een relatie tussen de eigenaar van een overeenkomst en die overeenkomst.</skos:definition>
     </owl:ObjectProperty>
@@ -191,7 +218,7 @@
     <!-- https://purl.org/ozo/kik#hasDescription -->
 
     <owl:ObjectProperty rdf:about="https://purl.org/ozo/kik#hasDescription">
-        <rdfs:range rdf:resource="https://purl.org/ozo/vph#Description"/>
+        <rdfs:range rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Description"/>
         <rdfs:label xml:lang="nl">heeft beschrijving</rdfs:label>
         <skos:definition xml:lang="nl">Legt een relatie tussen een instantie en een beschrijving van die instantie</skos:definition>
     </owl:ObjectProperty>
@@ -263,8 +290,8 @@ Voorbeeld: een WLZ indicatie vormt de input voor het zorgproces van een client.<
 
     <owl:ObjectProperty rdf:about="https://purl.org/ozo/kik#hasQuality">
         <owl:inverseOf rdf:resource="https://purl.org/ozo/kik#qualityOf"/>
-        <rdfs:domain rdf:resource="https://purl.org/ozo/vph#SpatioTemporalParticular"/>
-        <rdfs:range rdf:resource="https://purl.org/ozo/vph#Quality"/>
+        <rdfs:domain rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#SpatioTemporalParticular"/>
+        <rdfs:range rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Quality"/>
         <rdfs:label xml:lang="nl">heeft kwaliteit</rdfs:label>
         <skos:definition xml:lang="nl">Verwijst naar een kwaliteit.</skos:definition>
     </owl:ObjectProperty>
@@ -274,7 +301,7 @@ Voorbeeld: een WLZ indicatie vormt de input voor het zorgproces van een client.<
     <!-- https://purl.org/ozo/kik#hasQualityValue -->
 
     <owl:ObjectProperty rdf:about="https://purl.org/ozo/kik#hasQualityValue">
-        <rdfs:range rdf:resource="https://purl.org/ozo/vph#QualityValue"/>
+        <rdfs:range rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#QualityValue"/>
         <rdfs:label xml:lang="nl">heeft kwaliteitswaarde</rdfs:label>
         <skos:definition xml:lang="nl">Verwijst naar de waarde van een kwaliteitsmeting.</skos:definition>
     </owl:ObjectProperty>
@@ -294,9 +321,65 @@ Voorbeeld: een zorgdossier heeft_onderwerp client waarover het dossier gaat.</sk
     <!-- https://purl.org/ozo/kik#hasUnitOfMeasure -->
 
     <owl:ObjectProperty rdf:about="https://purl.org/ozo/kik#hasUnitOfMeasure">
-        <rdfs:range rdf:resource="https://purl.org/ozo/vph#UnitOfMeasure"/>
-        <rdfs:label xml:lang="nl">Verwijst naar de meeteenheid van een meting.</rdfs:label>
+        <rdfs:range rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#UnitOfMeasure"/>
         <rdfs:label xml:lang="nl">heeft meeteenheid</rdfs:label>
+        <skos:definition xml:lang="nl">Verwijst naar de meeteenheid van een meting.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://purl.org/ozo/kik#heeftContractOmvang -->
+
+    <owl:ObjectProperty rdf:about="https://purl.org/ozo/kik#heeftContractOmvang">
+        <rdfs:range rdf:resource="https://purl.org/ozo/kik#ContractOmvang"/>
+        <rdfs:label xml:lang="nl">heeft contractomvang</rdfs:label>
+        <skos:definition xml:lang="nl">Geeft de relatie aan tussen een werkovereenkomst en de omvang van die overeenkomst, bijvoorbeeld in aantal uren per week.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://purl.org/ozo/kik#heeftFunctie -->
+
+    <owl:ObjectProperty rdf:about="https://purl.org/ozo/kik#heeftFunctie">
+        <rdfs:domain rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Human"/>
+        <rdfs:range rdf:resource="https://purl.org/ozo/kik#Functie"/>
+        <rdfs:label xml:lang="nl">heeft functie</rdfs:label>
+        <skos:definition xml:lang="nl">De functie van een persoon die vervult wordt als onderdeel van een werkovereenkomst.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://purl.org/ozo/kik#heeftGewerkt -->
+
+    <owl:ObjectProperty rdf:about="https://purl.org/ozo/kik#heeftGewerkt">
+        <rdfs:domain rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Human"/>
+        <rdfs:range rdf:resource="https://purl.org/ozo/kik#GewerktePeriode"/>
+        <rdfs:label xml:lang="nl">heeft gewerkt</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://purl.org/ozo/kik#heeftKostenplaats -->
+
+    <owl:ObjectProperty rdf:about="https://purl.org/ozo/kik#heeftKostenplaats">
+        <rdfs:range rdf:resource="https://purl.org/ozo/kik#CostCenter"/>
+        <rdfs:label xml:lang="nl">heeft kostenplaats</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://purl.org/ozo/kik#heeftOpdrachtgever -->
+
+    <owl:ObjectProperty rdf:about="https://purl.org/ozo/kik#heeftOpdrachtgever">
+        <rdfs:label xml:lang="nl">heeft opdrachtgever</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://purl.org/ozo/kik#heeftOpdrachtnemer -->
+
+    <owl:ObjectProperty rdf:about="https://purl.org/ozo/kik#heeftOpdrachtnemer">
+        <rdfs:label xml:lang="nl">heeft opdrachtnemer</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -304,10 +387,27 @@ Voorbeeld: een zorgdossier heeft_onderwerp client waarover het dossier gaat.</sk
     <!-- https://purl.org/ozo/kik#heeftVerzuimPeriode -->
 
     <owl:ObjectProperty rdf:about="https://purl.org/ozo/kik#heeftVerzuimPeriode">
-        <rdfs:domain rdf:resource="https://purl.org/ozo/kik#WerkOvereenkomst"/>
         <rdfs:range rdf:resource="https://purl.org/ozo/kik#VerzuimPeriode"/>
         <rdfs:label xml:lang="nl">heeft verzuimperiode</rdfs:label>
         <skos:definition xml:lang="nl">Verwijst naar de verzuimperiode die hoort bij een werkovereenkomst.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://purl.org/ozo/kik#heeftVestiging -->
+
+    <owl:ObjectProperty rdf:about="https://purl.org/ozo/kik#heeftVestiging">
+        <owl:inverseOf rdf:resource="https://purl.org/ozo/kik#vestigingVan"/>
+        <rdfs:label xml:lang="nl">heeft vestiging</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://purl.org/ozo/kik#heeftWerkOvereenkomst -->
+
+    <owl:ObjectProperty rdf:about="https://purl.org/ozo/kik#heeftWerkOvereenkomst">
+        <rdfs:subPropertyOf rdf:resource="https://purl.org/ozo/kik#hasAgreement"/>
+        <rdfs:label xml:lang="nl">heeft werkovereenkomst</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -316,7 +416,7 @@ Voorbeeld: een zorgdossier heeft_onderwerp client waarover het dossier gaat.</sk
 
     <owl:ObjectProperty rdf:about="https://purl.org/ozo/kik#is_client_binnen_verpleegproces">
         <rdfs:subPropertyOf rdf:resource="https://purl.org/ozo/kik#participatesIn"/>
-        <rdfs:domain rdf:resource="https://purl.org/ozo/vph#Human"/>
+        <rdfs:domain rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Human"/>
         <rdfs:range rdf:resource="https://purl.org/ozo/kik#NursingProcess"/>
     </owl:ObjectProperty>
     
@@ -367,7 +467,7 @@ Voorbeeld: een zorgdossier heeft_onderwerp client waarover het dossier gaat.</sk
     <!-- https://purl.org/ozo/kik#qualityOf -->
 
     <owl:ObjectProperty rdf:about="https://purl.org/ozo/kik#qualityOf">
-        <rdfs:domain rdf:resource="https://purl.org/ozo/vph#Quality"/>
+        <rdfs:domain rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Quality"/>
         <rdfs:label xml:lang="nl">kwaliteit van</rdfs:label>
         <skos:definition xml:lang="nl">Verwijst naar de houder van een zekere kwaliteit.</skos:definition>
     </owl:ObjectProperty>
@@ -379,6 +479,14 @@ Voorbeeld: een zorgdossier heeft_onderwerp client waarover het dossier gaat.</sk
     <owl:ObjectProperty rdf:about="https://purl.org/ozo/kik#roleOf">
         <rdfs:label xml:lang="nl">rol van</rdfs:label>
         <skos:definition xml:lang="nl">Geeft van een rol aan wie die rol vervult.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://purl.org/ozo/kik#vestigingVan -->
+
+    <owl:ObjectProperty rdf:about="https://purl.org/ozo/kik#vestigingVan">
+        <rdfs:label xml:lang="nl">vestiging van</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -404,18 +512,6 @@ Voorbeeld: een zorgdossier heeft_onderwerp client waarover het dossier gaat.</sk
     
 
 
-    <!-- https://purl.org/ozo/kik#ZiektePercentage -->
-
-    <owl:DatatypeProperty rdf:about="https://purl.org/ozo/kik#ZiektePercentage">
-        <rdfs:domain rdf:resource="https://purl.org/ozo/kik#ZiektePeriode"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-        <rdfs:label xml:lang="nl">Ziektepercentage</rdfs:label>
-        <skos:definition xml:lang="nl">Percentage waarvoor iemand ziek is in een bepaalde Ziekteperiode.
-Waarde is een geheel getal van 0[%] t/m 100[%].</skos:definition>
-    </owl:DatatypeProperty>
-    
-
-
     <!-- https://purl.org/ozo/kik#aoPercentage -->
 
     <owl:DatatypeProperty rdf:about="https://purl.org/ozo/kik#aoPercentage">
@@ -431,7 +527,7 @@ De waarde is altijd een geheel getal en ligt tussen de 0[%] en 100[%].</skos:def
     <!-- https://purl.org/ozo/kik#birthname -->
 
     <owl:DatatypeProperty rdf:about="https://purl.org/ozo/kik#birthname">
-        <rdfs:domain rdf:resource="https://purl.org/ozo/vph#Human"/>
+        <rdfs:domain rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Human"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <rdfs:label>geboortenaam</rdfs:label>
         <skos:definition xml:lang="nl">De geslachtsnaam waarmee iemand geboren is</skos:definition>
@@ -456,16 +552,6 @@ De waarde is altijd een geheel getal en ligt tussen de 0[%] en 100[%].</skos:def
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
         <rdfs:label xml:lang="nl">gewerkte uren</rdfs:label>
         <skos:definition xml:lang="nl">Aantal uren dat gewerkt is binnen een bepaalde periode</skos:definition>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://purl.org/ozo/kik#hasNumericalValue -->
-
-    <owl:DatatypeProperty rdf:about="https://purl.org/ozo/kik#hasNumericalValue">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-        <rdfs:label xml:lang="nl">numerieke waarde</rdfs:label>
-        <skos:definition xml:lang="nl">De numerieke waarde van een zekere uitkomst.</skos:definition>
     </owl:DatatypeProperty>
     
 
@@ -579,6 +665,16 @@ De waarde is altijd een geheel getal en ligt tussen de 0[%] en 100[%].</skos:def
     
 
 
+    <!-- https://purl.org/ozo/kik#numeriekeWaarde -->
+
+    <owl:DatatypeProperty rdf:about="https://purl.org/ozo/kik#numeriekeWaarde">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:label xml:lang="nl">numerieke waarde</rdfs:label>
+        <skos:definition xml:lang="nl">De numerieke waarde van een zekere uitkomst.</skos:definition>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- https://purl.org/ozo/kik#parttimeFactor -->
 
     <owl:DatatypeProperty rdf:about="https://purl.org/ozo/kik#parttimeFactor">
@@ -604,6 +700,18 @@ Voorbeeld:
     
 
 
+    <!-- https://purl.org/ozo/kik#ziektePercentage -->
+
+    <owl:DatatypeProperty rdf:about="https://purl.org/ozo/kik#ziektePercentage">
+        <rdfs:domain rdf:resource="https://purl.org/ozo/kik#ZiektePeriode"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:label xml:lang="nl">ziektepercentage</rdfs:label>
+        <skos:definition xml:lang="nl">Percentage waarvoor iemand ziek is in een bepaalde Ziekteperiode.
+Waarde is een geheel getal van 0[%] t/m 100[%].</skos:definition>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -615,28 +723,37 @@ Voorbeeld:
     
 
 
-    <!-- https://purl.org/ozo/vph#Agreement -->
+    <!-- http://www.zinl.nl/ontologies/VPH-domain-ontology#AccomodativeObject -->
 
-    <owl:Class rdf:about="https://purl.org/ozo/vph#Agreement">
+    <rdf:Description rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#AccomodativeObject">
+        <rdfs:label xml:lang="nl">Verblijfsobject</rdfs:label>
+        <skos:definition xml:lang="nl">Een verblijfsobject is een kleinste binnen één of meer panden gelegen en voor woon-, bedrijfsmatige, of recreatieve doeleinden geschikte eenheid van gebruik die ontsloten wordt via een eigen afsluitbare toegang vanaf de openbare weg, een erf of een gedeelde verkeersruimte, onderwerp kan zijn van goederenrechtelijke rechtshandelingen en in functioneel opzicht zelfstandig is.</skos:definition>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.zinl.nl/ontologies/VPH-domain-ontology#Agreement -->
+
+    <owl:Class rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#Agreement">
         <rdfs:label xml:lang="nl">Overeenkomst</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- https://purl.org/ozo/vph#Apprentice -->
+    <!-- http://www.zinl.nl/ontologies/VPH-domain-ontology#Apprentice -->
 
-    <rdf:Description rdf:about="https://purl.org/ozo/vph#Apprentice">
+    <rdf:Description rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#Apprentice">
         <rdfs:label xml:lang="nl">Leerling-Werknemer</rdfs:label>
     </rdf:Description>
     
 
 
-    <!-- https://purl.org/ozo/vph#Business -->
+    <!-- http://www.zinl.nl/ontologies/VPH-domain-ontology#Business -->
 
-    <rdf:Description rdf:about="https://purl.org/ozo/vph#Business">
+    <rdf:Description rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#Business">
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#hasPart"/>
+                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#heeftVestiging"/>
                 <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
                 <owl:onClass rdf:resource="https://purl.org/ozo/kik#Vestiging"/>
             </owl:Restriction>
@@ -652,164 +769,156 @@ Voorbeeld:
     
 
 
-    <!-- https://purl.org/ozo/vph#Description -->
+    <!-- http://www.zinl.nl/ontologies/VPH-domain-ontology#Description -->
 
-    <owl:Class rdf:about="https://purl.org/ozo/vph#Description">
+    <owl:Class rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#Description">
         <rdfs:label xml:lang="nl">Beschrijving</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- https://purl.org/ozo/vph#EducationalLevelValue -->
+    <!-- http://www.zinl.nl/ontologies/VPH-domain-ontology#EducationalLevelValue -->
 
-    <owl:Class rdf:about="https://purl.org/ozo/vph#EducationalLevelValue">
+    <owl:Class rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#EducationalLevelValue">
         <rdfs:label xml:lang="nl">Opleidingskwalificatiewaarde</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- https://purl.org/ozo/vph#Employee -->
+    <!-- http://www.zinl.nl/ontologies/VPH-domain-ontology#Employee -->
 
-    <rdf:Description rdf:about="https://purl.org/ozo/vph#Employee">
+    <rdf:Description rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#Employee">
         <rdfs:label xml:lang="nl">Werknemer</rdfs:label>
     </rdf:Description>
     
 
 
-    <!-- https://purl.org/ozo/vph#Freelancer -->
+    <!-- http://www.zinl.nl/ontologies/VPH-domain-ontology#Freelancer -->
 
-    <rdf:Description rdf:about="https://purl.org/ozo/vph#Freelancer">
+    <rdf:Description rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#Freelancer">
         <rdfs:label xml:lang="nl">ZZP&apos;er</rdfs:label>
     </rdf:Description>
     
 
 
-    <!-- https://purl.org/ozo/vph#Human -->
+    <!-- http://www.zinl.nl/ontologies/VPH-domain-ontology#Human -->
 
-    <owl:Class rdf:about="https://purl.org/ozo/vph#Human">
+    <owl:Class rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#Human">
         <rdfs:label xml:lang="nl">Persoon</rdfs:label>
         <skos:definition xml:lang="nl">Een natuurlijk persoon.</skos:definition>
     </owl:Class>
     
 
 
-    <!-- https://purl.org/ozo/vph#IntentionalProcess -->
+    <!-- http://www.zinl.nl/ontologies/VPH-domain-ontology#IntentionalProcess -->
 
-    <owl:Class rdf:about="https://purl.org/ozo/vph#IntentionalProcess"/>
+    <owl:Class rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#IntentionalProcess"/>
     
 
 
-    <!-- https://purl.org/ozo/vph#InvestigationEvent -->
+    <!-- http://www.zinl.nl/ontologies/VPH-domain-ontology#InvestigationEvent -->
 
-    <owl:Class rdf:about="https://purl.org/ozo/vph#InvestigationEvent"/>
+    <owl:Class rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#InvestigationEvent"/>
     
 
 
-    <!-- https://purl.org/ozo/vph#LocalizableArea -->
+    <!-- http://www.zinl.nl/ontologies/VPH-domain-ontology#LocalizableArea -->
 
-    <owl:Class rdf:about="https://purl.org/ozo/vph#LocalizableArea"/>
+    <owl:Class rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#LocalizableArea"/>
     
 
 
-    <!-- https://purl.org/ozo/vph#LocalizablePlaceDescription -->
+    <!-- http://www.zinl.nl/ontologies/VPH-domain-ontology#LocalizablePlaceDescription -->
 
-    <owl:Class rdf:about="https://purl.org/ozo/vph#LocalizablePlaceDescription"/>
+    <owl:Class rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#LocalizablePlaceDescription"/>
     
 
 
-    <!-- https://purl.org/ozo/vph#MedicalClassificationSystem -->
+    <!-- http://www.zinl.nl/ontologies/VPH-domain-ontology#MedicalClassificationSystem -->
 
-    <owl:Class rdf:about="https://purl.org/ozo/vph#MedicalClassificationSystem"/>
+    <owl:Class rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#MedicalClassificationSystem"/>
     
 
 
-    <!-- https://purl.org/ozo/vph#NursingHomeOrganization -->
+    <!-- http://www.zinl.nl/ontologies/VPH-domain-ontology#NursingHomeOrganization -->
 
-    <rdf:Description rdf:about="https://purl.org/ozo/vph#NursingHomeOrganization">
-        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/vph#Business"/>
+    <rdf:Description rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#NursingHomeOrganization">
+        <rdfs:subClassOf rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Business"/>
         <rdfs:label xml:lang="nl">Verpleeghuis</rdfs:label>
     </rdf:Description>
     
 
 
-    <!-- https://purl.org/ozo/vph#Organization -->
+    <!-- http://www.zinl.nl/ontologies/VPH-domain-ontology#Organization -->
 
-    <rdf:Description rdf:about="https://purl.org/ozo/vph#Organization">
+    <rdf:Description rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#Organization">
         <rdfs:label xml:lang="nl">Organisatie</rdfs:label>
     </rdf:Description>
     
 
 
-    <!-- https://purl.org/ozo/vph#PathologicAnatomicalEntity -->
+    <!-- http://www.zinl.nl/ontologies/VPH-domain-ontology#PathologicAnatomicalEntity -->
 
-    <owl:Class rdf:about="https://purl.org/ozo/vph#PathologicAnatomicalEntity"/>
+    <owl:Class rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#PathologicAnatomicalEntity"/>
     
 
 
-    <!-- https://purl.org/ozo/vph#PatientInCare -->
+    <!-- http://www.zinl.nl/ontologies/VPH-domain-ontology#PatientInCare -->
 
-    <rdf:Description rdf:about="https://purl.org/ozo/vph#PatientInCare">
+    <rdf:Description rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#PatientInCare">
         <vph:editorialDefinition xml:lang="nl">Een persoon die zorg onvangt in een instelling voor verpleeghuiszorg</vph:editorialDefinition>
     </rdf:Description>
     
 
 
-    <!-- https://purl.org/ozo/vph#Quality -->
+    <!-- http://www.zinl.nl/ontologies/VPH-domain-ontology#Quality -->
 
-    <owl:Class rdf:about="https://purl.org/ozo/vph#Quality">
+    <owl:Class rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#Quality">
         <rdfs:label xml:lang="nl">Kwaliteit</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- https://purl.org/ozo/vph#QualityValue -->
+    <!-- http://www.zinl.nl/ontologies/VPH-domain-ontology#QualityValue -->
 
-    <owl:Class rdf:about="https://purl.org/ozo/vph#QualityValue">
+    <owl:Class rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#QualityValue">
         <rdfs:label xml:lang="nl">Kwaliteitswaarde</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- https://purl.org/ozo/vph#SocialDescription -->
+    <!-- http://www.zinl.nl/ontologies/VPH-domain-ontology#SocialDescription -->
 
-    <owl:Class rdf:about="https://purl.org/ozo/vph#SocialDescription"/>
+    <owl:Class rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#SocialDescription"/>
     
 
 
-    <!-- https://purl.org/ozo/vph#Trainee -->
+    <!-- http://www.zinl.nl/ontologies/VPH-domain-ontology#Trainee -->
 
-    <rdf:Description rdf:about="https://purl.org/ozo/vph#Trainee">
+    <rdf:Description rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#Trainee">
         <rdfs:label xml:lang="nl">Stagiair</rdfs:label>
     </rdf:Description>
     
 
 
-    <!-- https://purl.org/ozo/vph#UnitOfMeasure -->
+    <!-- http://www.zinl.nl/ontologies/VPH-domain-ontology#UnitOfMeasure -->
 
-    <owl:Class rdf:about="https://purl.org/ozo/vph#UnitOfMeasure"/>
+    <owl:Class rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#UnitOfMeasure"/>
     
 
 
-    <!-- https://purl.org/ozo/vph#UnitOfWorkload -->
+    <!-- http://www.zinl.nl/ontologies/VPH-domain-ontology#UnitOfWorkload -->
 
-    <owl:Class rdf:about="https://purl.org/ozo/vph#UnitOfWorkload">
+    <owl:Class rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#UnitOfWorkload">
         <rdfs:label xml:lang="nl">Eenheid van werkomvang</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- https://purl.org/ozo/vph#Volunteer -->
+    <!-- http://www.zinl.nl/ontologies/VPH-domain-ontology#Volunteer -->
 
-    <rdf:Description rdf:about="https://purl.org/ozo/vph#Volunteer">
+    <rdf:Description rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#Volunteer">
         <rdfs:label xml:lang="nl">Vrijwilliger</rdfs:label>
-    </rdf:Description>
-    
-
-
-    <!-- https://purl.org/ozo/vph#Worker -->
-
-    <rdf:Description rdf:about="https://purl.org/ozo/vph#Worker">
-        <rdfs:label xml:lang="nl">Medewerker</rdfs:label>
     </rdf:Description>
     
 
@@ -817,21 +926,9 @@ Voorbeeld:
     <!-- https://purl.org/ozo/kik#Adres -->
 
     <owl:Class rdf:about="https://purl.org/ozo/kik#Adres">
-        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/vph#LocalizablePlaceDescription"/>
+        <rdfs:subClassOf rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#LocalizablePlaceDescription"/>
         <rdfs:label xml:lang="nl">Adres</rdfs:label>
         <skos:definition xml:lang="nl">Een adres is een door het bevoegde gemeentelijke orgaan aan een verblijfsobject, een standplaats of een ligplaats toegekende benaming, bestaande uit een combinatie van de naam van een openbare ruimte, een nummeraanduiding en de naam van een woonplaats.</skos:definition>
-        <vph:definitionSource rdf:resource="https://bag.basisregistraties.overheid.nl/begrippenlijst"/>
-    </owl:Class>
-    
-
-
-    <!-- https://purl.org/ozo/kik#AdresseerbaarObject -->
-
-    <owl:Class rdf:about="https://purl.org/ozo/kik#AdresseerbaarObject">
-        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/vph#LocalizableArea"/>
-        <rdfs:label xml:lang="nl">Adresseerbaar object</rdfs:label>
-        <skos:definition xml:lang="nl">Een adresseerbaar object is een object waaraan adressen ingevolge de basisregistratie adressen kunnen worden toegekend: een verblijfsobject, standplaats of ligplaats.</skos:definition>
-        <skos:exactMatch rdf:resource="http://bag.basisregistraties.overheid.nl/id/begrip/AdresseerbaarObject"/>
         <vph:definitionSource rdf:resource="https://bag.basisregistraties.overheid.nl/begrippenlijst"/>
     </owl:Class>
     
@@ -840,7 +937,7 @@ Voorbeeld:
     <!-- https://purl.org/ozo/kik#AgreementSubject -->
 
     <owl:Class rdf:about="https://purl.org/ozo/kik#AgreementSubject">
-        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/vph#AbstractParticular"/>
+        <rdfs:subClassOf rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#AbstractParticular"/>
         <rdfs:label xml:lang="nl">Overeenkomst onderwerp</rdfs:label>
         <skos:definition xml:lang="nl">Een lijst met onderwerpen waarover een overeenkomst kan gaan.</skos:definition>
     </owl:Class>
@@ -850,7 +947,7 @@ Voorbeeld:
     <!-- https://purl.org/ozo/kik#ArbeidsOngeschiktheid -->
 
     <owl:Class rdf:about="https://purl.org/ozo/kik#ArbeidsOngeschiktheid">
-        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/vph#Description"/>
+        <rdfs:subClassOf rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Description"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://purl.org/ozo/kik#aoPercentage"/>
@@ -872,6 +969,7 @@ Voorbeeld:
         <rdfs:label xml:lang="nl">Arbeidsongeschiktheid</rdfs:label>
         <skos:definition xml:lang="nl">Onder arbeidsongeschiktheid wordt verstaan het niet in staat worden geacht arbeid te verrichten met een erkende economische meerwaarde. Dat men geheel of gedeeltelijk arbeidsongeschikt is, kan een lichamelijke of psychische oorzaak hebben.</skos:definition>
         <vph:definitionSource rdf:resource="https://nl.wikipedia.org/wiki/Arbeidsongeschiktheid"/>
+        <vph:editorNote xml:lang="nl">Arbeidsongeschiktheid wordt altijd bepaald door de combinatie van de fysieke en/om mentale toestand van een persoon en de vereisten van bepaalde werkzaamheden. Een persoon is dus altijd in zekere mate arbeidsongeschikt voor specifieke werkzaamheden.</vph:editorNote>
     </owl:Class>
     
 
@@ -882,18 +980,19 @@ Voorbeeld:
         <rdfs:subClassOf rdf:resource="https://purl.org/ozo/kik#WerkOvereenkomst"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#agreementOf"/>
-                <owl:someValuesFrom>
+                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#heeftOpdrachtnemer"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass>
                     <owl:Class>
                         <owl:intersectionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://purl.org/ozo/vph#Human"/>
+                            <rdf:Description rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#Human"/>
                             <owl:Restriction>
-                                <owl:onProperty rdf:resource="https://purl.org/ozo/vph#hasRole"/>
-                                <owl:someValuesFrom rdf:resource="https://purl.org/ozo/vph#Employee"/>
+                                <owl:onProperty rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#hasRole"/>
+                                <owl:someValuesFrom rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Employee"/>
                             </owl:Restriction>
                         </owl:intersectionOf>
                     </owl:Class>
-                </owl:someValuesFrom>
+                </owl:onClass>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointUnionOf rdf:parseType="Collection">
@@ -934,21 +1033,22 @@ Uw werkgever moet u binnen 1 maand na uw indiensttreding een aantal gegevens sch
     <!-- https://purl.org/ozo/kik#ArbeidsOvereenkomstBBL -->
 
     <owl:Class rdf:about="https://purl.org/ozo/kik#ArbeidsOvereenkomstBBL">
-        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/kik#ArbeidsOvereenkomstBepaaldeTijd"/>
+        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/kik#ArbeidsOvereenkomst"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#agreementOf"/>
-                <owl:someValuesFrom>
+                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#heeftOpdrachtnemer"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass>
                     <owl:Class>
                         <owl:intersectionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://purl.org/ozo/vph#Human"/>
+                            <rdf:Description rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#Human"/>
                             <owl:Restriction>
-                                <owl:onProperty rdf:resource="https://purl.org/ozo/vph#hasRole"/>
-                                <owl:someValuesFrom rdf:resource="https://purl.org/ozo/vph#Apprentice"/>
+                                <owl:onProperty rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#hasRole"/>
+                                <owl:someValuesFrom rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Apprentice"/>
                             </owl:Restriction>
                         </owl:intersectionOf>
                     </owl:Class>
-                </owl:someValuesFrom>
+                </owl:onClass>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:isDefinedBy rdf:resource="https://nl.hellolaw.com/juridisch-nieuws/wat-je-moet-weten-over-het-bbl-contract"/>
@@ -996,7 +1096,7 @@ Er is veel te vinden over BBL, maar wettelijke basis is nog niet gevonden.</skos
     <!-- https://purl.org/ozo/kik#BeleidsAfspraak -->
 
     <owl:Class rdf:about="https://purl.org/ozo/kik#BeleidsAfspraak">
-        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/vph#Agreement"/>
+        <rdfs:subClassOf rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Agreement"/>
         <rdfs:label xml:lang="nl">Beleidsafspraak</rdfs:label>
         <skos:definition xml:lang="nl">Een overeenkomst waarbij de specifieke toepassing van een bepaald beleid wordt overeengekomen.</skos:definition>
     </owl:Class>
@@ -1016,7 +1116,7 @@ Er is veel te vinden over BBL, maar wettelijke basis is nog niet gevonden.</skos
     <!-- https://purl.org/ozo/kik#Client -->
 
     <owl:Class rdf:about="https://purl.org/ozo/kik#Client">
-        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/vph#PatientInCare"/>
+        <rdfs:subClassOf rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#PatientInCare"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://purl.org/ozo/kik#is_client_binnen_verpleegproces"/>
@@ -1032,7 +1132,7 @@ Er is veel te vinden over BBL, maar wettelijke basis is nog niet gevonden.</skos
     <!-- https://purl.org/ozo/kik#CodeLijst -->
 
     <owl:Class rdf:about="https://purl.org/ozo/kik#CodeLijst">
-        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/vph#QualityValue"/>
+        <rdfs:subClassOf rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#QualityValue"/>
     </owl:Class>
     
 
@@ -1040,16 +1140,16 @@ Er is veel te vinden over BBL, maar wettelijke basis is nog niet gevonden.</skos
     <!-- https://purl.org/ozo/kik#ContractOmvang -->
 
     <owl:Class rdf:about="https://purl.org/ozo/kik#ContractOmvang">
-        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/vph#Description"/>
+        <rdfs:subClassOf rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Description"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://purl.org/ozo/kik#hasUnitOfMeasure"/>
-                <owl:someValuesFrom rdf:resource="https://purl.org/ozo/vph#UnitOfWorkload"/>
+                <owl:someValuesFrom rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#UnitOfWorkload"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#hasNumericalValue"/>
+                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#numeriekeWaarde"/>
                 <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1072,7 +1172,7 @@ Voorbeeld: contractomvang is 36 uur per week.</skos:definition>
     <!-- https://purl.org/ozo/kik#CostCenter -->
 
     <owl:Class rdf:about="https://purl.org/ozo/kik#CostCenter">
-        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/vph#SocialDescription"/>
+        <rdfs:subClassOf rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#SocialDescription"/>
         <rdfs:isDefinedBy rdf:resource="https://nl.wikipedia.org/wiki/Kostenplaats"/>
         <rdfs:label xml:lang="nl">Kostenplaats</rdfs:label>
         <skos:definition xml:lang="nl">Een kostenplaats is een ten behoeve van de boekhouding en controlling afgebakende eenheid binnen een bedrijf, waaraan kosten en prestatie kunnen worden toegerekend. Een kostenplaats is meestal een afdeling van een bedrijf.</skos:definition>
@@ -1083,7 +1183,7 @@ Voorbeeld: contractomvang is 36 uur per week.</skos:definition>
     <!-- https://purl.org/ozo/kik#DecubitusCategorieCodelijst -->
 
     <owl:Class rdf:about="https://purl.org/ozo/kik#DecubitusCategorieCodelijst">
-        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/vph#MedicalRatingValue"/>
+        <rdfs:subClassOf rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#MedicalRatingValue"/>
         <rdfs:label xml:lang="nl">Decubituscategorie codelijst</rdfs:label>
         <skos:definition xml:lang="nl">Lijst van categorieën om de ernst van een decubitus wond te categoriseren.</skos:definition>
         <skos:exactMatch rdf:resource="https://decor.nictiz.nl/art-decor/decor-valuesets--venvn-wond-?id=2.16.840.1.113883.2.4.3.11.60.40.2.19.1.1&amp;effectiveDate=2017-12-31T00:00:00&amp;language=nl-NL"/>
@@ -1095,7 +1195,7 @@ Voorbeeld: contractomvang is 36 uur per week.</skos:definition>
     <!-- https://purl.org/ozo/kik#DecubitusGraad -->
 
     <owl:Class rdf:about="https://purl.org/ozo/kik#DecubitusGraad">
-        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/vph#InternalQuality"/>
+        <rdfs:subClassOf rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#InternalQuality"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://purl.org/ozo/kik#hasQualityValue"/>
@@ -1119,7 +1219,7 @@ Meestal volgens de Decubituscategorie codelijst volgens de V&amp;VN Wondzorg def
     <!-- https://purl.org/ozo/kik#DecubitusWond -->
 
     <owl:Class rdf:about="https://purl.org/ozo/kik#DecubitusWond">
-        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/vph#PathologicAnatomicalEntity"/>
+        <rdfs:subClassOf rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#PathologicAnatomicalEntity"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://purl.org/ozo/kik#hasQuality"/>
@@ -1129,7 +1229,7 @@ Meestal volgens de Decubituscategorie codelijst volgens de V&amp;VN Wondzorg def
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://purl.org/ozo/kik#partOf"/>
-                <owl:someValuesFrom rdf:resource="https://purl.org/ozo/vph#Human"/>
+                <owl:someValuesFrom rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Human"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:isDefinedBy xml:lang="nl">SNOMED CT</rdfs:isDefinedBy>
@@ -1143,7 +1243,7 @@ Meestal volgens de Decubituscategorie codelijst volgens de V&amp;VN Wondzorg def
     <!-- https://purl.org/ozo/kik#EQFKwalificatie -->
 
     <owl:Class rdf:about="https://purl.org/ozo/kik#EQFKwalificatie">
-        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/vph#EducationalLevelValue"/>
+        <rdfs:subClassOf rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#EducationalLevelValue"/>
         <rdfs:isDefinedBy rdf:resource="https://www.europass.nl/eqfnlqf/"/>
         <rdfs:label xml:lang="nl">EQF Kwalificatiewaarde</rdfs:label>
         <skos:definition xml:lang="nl">Een kwalificatiewaarde volgens het Europees Kwalificatieraamwerk.</skos:definition>
@@ -1154,7 +1254,7 @@ Meestal volgens de Decubituscategorie codelijst volgens de V&amp;VN Wondzorg def
     <!-- https://purl.org/ozo/kik#Functie -->
 
     <owl:Class rdf:about="https://purl.org/ozo/kik#Functie">
-        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/vph#Description"/>
+        <rdfs:subClassOf rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Description"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://purl.org/ozo/kik#eindDatum"/>
@@ -1176,11 +1276,11 @@ Meestal volgens de Decubituscategorie codelijst volgens de V&amp;VN Wondzorg def
     <!-- https://purl.org/ozo/kik#GewerktePeriode -->
 
     <owl:Class rdf:about="https://purl.org/ozo/kik#GewerktePeriode">
-        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/vph#Description"/>
+        <rdfs:subClassOf rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Description"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://purl.org/ozo/kik#hasUnitOfMeasure"/>
-                <owl:hasValue rdf:resource="https://purl.org/ozo/vph#Uur"/>
+                <owl:hasValue rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Uur"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1208,10 +1308,30 @@ Aan de periode, aangeduid met startdatum en einddatum, wordt gekoppeld het aanta
     
 
 
+    <!-- https://purl.org/ozo/kik#GrootboekRekening -->
+
+    <owl:Class rdf:about="https://purl.org/ozo/kik#GrootboekRekening">
+        <rdfs:subClassOf rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#SocialDescription"/>
+        <skos:definition xml:lang="nl">Een grootboekrekening is een rekening bestaande uit een lijst van gelijksoortige uitgaven- en inkomstenposten. Elke grootboekrekening is van het type balansrekening of van het type resultaatrekening. Het grootboek is de verzameling van alle grootboekrekeningen. Hiermee is inzicht te verkrijgen in de financiële stromen die omgaan in een bedrijf, vereniging, stichting, enz. Elke grootboekrekening die wordt aangemaakt, krijgt een uniek rekeningnummer (niet te verwarren met het nummer van een betaalrekening) toegewezen. Alle grootboekrekeningen bij elkaar worden grootboek of grootboekrekeningschema genoemd.</skos:definition>
+        <vph:definitionSource rdf:resource="https://nl.wikipedia.org/wiki/Grootboekrekening"/>
+    </owl:Class>
+    
+
+
+    <!-- https://purl.org/ozo/kik#GrootboekRubriek -->
+
+    <owl:Class rdf:about="https://purl.org/ozo/kik#GrootboekRubriek">
+        <rdfs:subClassOf rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#SocialDescription"/>
+        <skos:definition xml:lang="nl">Een grootboek rubriek wordt gebruikt om grootboekrekeningen te groeperen en kan bestaan uit een verzameling grootboekrekeningen en/of een verazameling grootboek rubrieken.
+Het geheel aan grootboek rubrieken vormt het totale grootboek. De grootboek rubrieken zijn hierarchisch opgebouwd.</skos:definition>
+    </owl:Class>
+    
+
+
     <!-- https://purl.org/ozo/kik#IndicatieBesluit -->
 
     <owl:Class rdf:about="https://purl.org/ozo/kik#IndicatieBesluit">
-        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/vph#SocialDescription"/>
+        <rdfs:subClassOf rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#SocialDescription"/>
         <rdfs:isDefinedBy rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology:Wet_Langdurige_Zorg"/>
         <rdfs:label xml:lang="nl">Indicatiebesluit</rdfs:label>
         <skos:definition xml:lang="nl">Besluit van het CIZ waarbij beoordeeld wordt of en in welke omvang de verzekerde in aanmerking komt voor zorg.</skos:definition>
@@ -1226,14 +1346,14 @@ Aan de periode, aangeduid met startdatum en einddatum, wordt gekoppeld het aanta
         <rdfs:subClassOf rdf:resource="https://purl.org/ozo/kik#WerkOvereenkomst"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#agreementOf"/>
+                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#heeftOpdrachtnemer"/>
                 <owl:someValuesFrom>
                     <owl:Class>
                         <owl:intersectionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://purl.org/ozo/vph#Human"/>
+                            <rdf:Description rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#Human"/>
                             <owl:Restriction>
-                                <owl:onProperty rdf:resource="https://purl.org/ozo/vph#hasRole"/>
-                                <owl:someValuesFrom rdf:resource="https://purl.org/ozo/vph#Freelancer"/>
+                                <owl:onProperty rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#hasRole"/>
+                                <owl:someValuesFrom rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Freelancer"/>
                             </owl:Restriction>
                         </owl:intersectionOf>
                     </owl:Class>
@@ -1250,7 +1370,7 @@ Aan de periode, aangeduid met startdatum en einddatum, wordt gekoppeld het aanta
     <!-- https://purl.org/ozo/kik#JaarRekening -->
 
     <owl:Class rdf:about="https://purl.org/ozo/kik#JaarRekening">
-        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/vph#SocialDescription"/>
+        <rdfs:subClassOf rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#SocialDescription"/>
         <rdfs:isDefinedBy xml:lang="nl">artikel 361, eerste lid, van Boek 2 van het Burgerlijk Wetboek</rdfs:isDefinedBy>
         <skos:definition xml:lang="nl">De enkelvoudige jaarrekening die bestaat uit de balans en de winst- en verliesrekening met de toelichting, en de geconsolideerde jaarrekening indien de rechtspersoon een geconsolideerde jaarrekening opstelt.</skos:definition>
         <vph:definitionSource rdf:resource="http://wetten.overheid.nl/jci1.3:c:BWBR0003045&amp;boek=2&amp;titeldeel=9&amp;afdeling=2&amp;artikel=361&amp;lid=1"/>
@@ -1261,11 +1381,11 @@ Aan de periode, aangeduid met startdatum en einddatum, wordt gekoppeld het aanta
     <!-- https://purl.org/ozo/kik#Kwalificatieniveau -->
 
     <owl:Class rdf:about="https://purl.org/ozo/kik#Kwalificatieniveau">
-        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/vph#Quality"/>
+        <rdfs:subClassOf rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Quality"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://purl.org/ozo/kik#hasQualityValue"/>
-                <owl:someValuesFrom rdf:resource="https://purl.org/ozo/vph#EducationalLevelValue"/>
+                <owl:someValuesFrom rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#EducationalLevelValue"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1289,7 +1409,7 @@ Aan de periode, aangeduid met startdatum en einddatum, wordt gekoppeld het aanta
     <!-- https://purl.org/ozo/kik#MedicatieReview -->
 
     <owl:Class rdf:about="https://purl.org/ozo/kik#MedicatieReview">
-        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/vph#InvestigationEvent"/>
+        <rdfs:subClassOf rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#InvestigationEvent"/>
         <rdfs:isDefinedBy xml:lang="nl">SNOMED Clinical Terms</rdfs:isDefinedBy>
         <rdfs:label xml:lang="nl">Medicatiereview</rdfs:label>
         <skos:definition xml:lang="nl">Systematische beoordeling van het geneesmiddelgebruik van een individuele patiënt, met name bij polyfarmacie (chronisch gebruik van vijf of meer medicijnen tegelijk), door de behandelend arts, apotheker en de patiënt zelf (en/of mantelzorger of andere verzorgenden) op basis van een periodieke gestructureerde, kritische evaluatie van de medische, farmaceutische en gebruiksinformatie; doel zijn onder meer afstemming van de farmacotherapeutische behandeling door artsen, apothekers, verpleegkundigen en verzorgenden op basis van de wensen, behoeften en ervaringen van de patiënt, te komen tot de keuze van het juiste middel, bevordering van juist gebruik van de medicijnen en verminderen van risico&apos;s op problemen gerelateerd aan het medicijngebruik.</skos:definition>
@@ -1321,7 +1441,7 @@ Voor de garantie-uren krijgt u altijd betaald, ook als uw werkgever u niet oproe
     <!-- https://purl.org/ozo/kik#NLQFKwalificatie -->
 
     <owl:Class rdf:about="https://purl.org/ozo/kik#NLQFKwalificatie">
-        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/vph#EducationalLevelValue"/>
+        <rdfs:subClassOf rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#EducationalLevelValue"/>
         <rdfs:isDefinedBy rdf:resource="https://www.nlqf.nl"/>
         <rdfs:label xml:lang="nl">NLQF kwalificatiewaarde</rdfs:label>
         <skos:definition xml:lang="nl">Het Nederlands Kwalificatieraamwerk NLQF geeft duidelijkheid en zekerheid over het niveau van kwalificaties. Werkgevers kunnen zo de juiste mensen aannemen en de juiste scholing aanbieden aan werknemers. Werknemers kunnen aantonen wat zij waard zijn. Opleiders kunnen het niveau van hun kwalificaties vastleggen. Het NLQF telt acht niveaus, van basiskwalificatie tot universitair niveau en beschrijft per niveau de bijbehorende kennis en vaardigheden en de mate van verantwoordelijkheid en zelfstandigheid.</skos:definition>
@@ -1348,7 +1468,7 @@ Voor de garantie-uren krijgt u altijd betaald, ook als uw werkgever u niet oproe
     <!-- https://purl.org/ozo/kik#NummerAanduiding -->
 
     <owl:Class rdf:about="https://purl.org/ozo/kik#NummerAanduiding">
-        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/vph#LocalizablePlaceDescription"/>
+        <rdfs:subClassOf rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#LocalizablePlaceDescription"/>
         <rdfs:label xml:lang="nl">Nummeraanduiding</rdfs:label>
         <skos:definition xml:lang="nl">Een nummeraanduiding is een door het bevoegde gemeentelijke orgaan als zodanig toegekende aanduiding van een verblijfsobject, een standplaats of een ligplaats. Het is het samenstel van huisnummer, huisletter en huisnummertoevoeging.</skos:definition>
         <skos:exactMatch rdf:resource="http://bag.basisregistraties.overheid.nl/def/bag#Nummeraanduiding"/>
@@ -1360,7 +1480,7 @@ Voor de garantie-uren krijgt u altijd betaald, ook als uw werkgever u niet oproe
     <!-- https://purl.org/ozo/kik#NursingProcess -->
 
     <owl:Class rdf:about="https://purl.org/ozo/kik#NursingProcess">
-        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/vph#IntentionalProcess"/>
+        <rdfs:subClassOf rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#IntentionalProcess"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://purl.org/ozo/kik#hasDescription"/>
@@ -1382,7 +1502,7 @@ Voor de garantie-uren krijgt u altijd betaald, ook als uw werkgever u niet oproe
     <!-- https://purl.org/ozo/kik#OCWKwalificatie -->
 
     <owl:Class rdf:about="https://purl.org/ozo/kik#OCWKwalificatie">
-        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/vph#EducationalLevelValue"/>
+        <rdfs:subClassOf rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#EducationalLevelValue"/>
         <rdfs:label xml:lang="nl">OCW Kwalificatiewaarde</rdfs:label>
         <skos:definition xml:lang="nl">Kwalificatie volgens het ministerie van Onderwijs Cultuur en Wetenschap.</skos:definition>
     </owl:Class>
@@ -1392,7 +1512,7 @@ Voor de garantie-uren krijgt u altijd betaald, ook als uw werkgever u niet oproe
     <!-- https://purl.org/ozo/kik#ODBKwalificatie -->
 
     <owl:Class rdf:about="https://purl.org/ozo/kik#ODBKwalificatie">
-        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/vph#EducationalLevelValue"/>
+        <rdfs:subClassOf rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#EducationalLevelValue"/>
         <rdfs:label xml:lang="nl">ODB Kwalificatieniveau</rdfs:label>
         <skos:definition xml:lang="nl">Het kwalificatieniveau van de zorgverleners geeft aan welk niveau aan kwaliteitseisen (middels opleiding en scholing) gesteld wordt aan de medewerkers c.q. functies die ingezet worden bij het leveren van zorg- en dienstverlening aan de cliënten. Het kwalificatieniveau wordt gebaseerd op basis van de arbeidsovereenkomst en inzet van de medewerker. De FWG-functieindeling kan gebruikt worden als leidraad voor het indelen op kwalificatieniveau.
 
@@ -1418,23 +1538,7 @@ Het betreft onder andere behandelaren, verpleegkundigen, verzorgenden, helpenden
     <!-- https://purl.org/ozo/kik#OproepOvereenkomst -->
 
     <owl:Class rdf:about="https://purl.org/ozo/kik#OproepOvereenkomst">
-        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/kik#WerkOvereenkomst"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#agreementOf"/>
-                <owl:someValuesFrom>
-                    <owl:Class>
-                        <owl:intersectionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://purl.org/ozo/vph#Human"/>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="https://purl.org/ozo/vph#hasRole"/>
-                                <owl:someValuesFrom rdf:resource="https://purl.org/ozo/vph#Employee"/>
-                            </owl:Restriction>
-                        </owl:intersectionOf>
-                    </owl:Class>
-                </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/kik#ArbeidsOvereenkomst"/>
         <rdfs:isDefinedBy rdf:resource="https://www.rijksoverheid.nl/onderwerpen/arbeidsovereenkomst-en-cao/vraag-en-antwoord/welke-contracten-zijn-er-voor-oproepkrachten"/>
         <rdfs:label xml:lang="nl">Oproepovereenkomst</rdfs:label>
         <skos:definition xml:lang="nl">Er is sprake van een oproepovereenkomst
@@ -1461,19 +1565,19 @@ Bij 3 opeenvolgende contracten ontstaat een vast dienstverband. Ook krijgt u een
     
 
 
-    <!-- https://purl.org/ozo/kik#OrganizationalUnit -->
+    <!-- https://purl.org/ozo/kik#OrganisatorischeEenheid -->
 
-    <owl:Class rdf:about="https://purl.org/ozo/kik#OrganizationalUnit">
-        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/vph#Organization"/>
+    <owl:Class rdf:about="https://purl.org/ozo/kik#OrganisatorischeEenheid">
+        <rdfs:subClassOf rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Organization"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://purl.org/ozo/kik#partOf"/>
-                <owl:someValuesFrom rdf:resource="https://purl.org/ozo/vph#Organization"/>
+                <owl:someValuesFrom rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Organization"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:isDefinedBy rdf:resource="https://www.kennisconsult.nl/begrippen/7968/"/>
-        <rdfs:label xml:lang="nl">Afdeling</rdfs:label>
         <rdfs:label xml:lang="nl">Organisatorische Eenheid</rdfs:label>
+        <skos:altLabel xml:lang="nl">Afdeling</skos:altLabel>
         <skos:definition xml:lang="nl">Een groep binnen een organisatie die is gevormd ter behartiging van een specifieke organisatiedoelstelling.</skos:definition>
     </owl:Class>
     
@@ -1494,11 +1598,11 @@ Bij 3 opeenvolgende contracten ontstaat een vast dienstverband. Ook krijgt u een
     <!-- https://purl.org/ozo/kik#Personeel -->
 
     <owl:Class rdf:about="https://purl.org/ozo/kik#Personeel">
-        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/vph#GroupOfHumans"/>
+        <rdfs:subClassOf rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#GroupOfHumans"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://purl.org/ozo/kik#hasMember"/>
-                <owl:allValuesFrom rdf:resource="https://purl.org/ozo/vph#Human"/>
+                <owl:allValuesFrom rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Human"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointUnionOf rdf:parseType="Collection">
@@ -1539,14 +1643,14 @@ II) Lidmaatschap is tijdsafhankelijk (zeer waarschijnlijk afhankelijk van start-
         <rdfs:subClassOf rdf:resource="https://purl.org/ozo/kik#WerkOvereenkomst"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#agreementOf"/>
+                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#heeftOpdrachtnemer"/>
                 <owl:someValuesFrom>
                     <owl:Class>
                         <owl:intersectionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://purl.org/ozo/vph#Human"/>
+                            <rdf:Description rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#Human"/>
                             <owl:Restriction>
-                                <owl:onProperty rdf:resource="https://purl.org/ozo/vph#hasRole"/>
-                                <owl:someValuesFrom rdf:resource="https://purl.org/ozo/vph#Trainee"/>
+                                <owl:onProperty rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#hasRole"/>
+                                <owl:someValuesFrom rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Trainee"/>
                             </owl:Restriction>
                         </owl:intersectionOf>
                     </owl:Class>
@@ -1572,23 +1676,10 @@ II) Lidmaatschap is tijdsafhankelijk (zeer waarschijnlijk afhankelijk van start-
     
 
 
-    <!-- https://purl.org/ozo/kik#Verblijfsobject -->
-
-    <owl:Class rdf:about="https://purl.org/ozo/kik#Verblijfsobject">
-        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/kik#AdresseerbaarObject"/>
-        <rdfs:isDefinedBy rdf:resource="https://bag.basisregistraties.overheid.nl/begrippenlijst"/>
-        <rdfs:label xml:lang="nl">Verblijfsobject</rdfs:label>
-        <skos:definition xml:lang="nl">Een verblijfsobject is een kleinste binnen één of meer panden gelegen en voor woon-, bedrijfsmatige, of recreatieve doeleinden geschikte eenheid van gebruik die ontsloten wordt via een eigen afsluitbare toegang vanaf de openbare weg, een erf of een gedeelde verkeersruimte, onderwerp kan zijn van goederenrechtelijke rechtshandelingen en in functioneel opzicht zelfstandig is.</skos:definition>
-        <skos:exactMatch rdf:resource="http://bag.basisregistraties.overheid.nl/id/begrip/Verblijfsobject"/>
-        <vph:definitionSource xml:lang="nl">Kadaster</vph:definitionSource>
-    </owl:Class>
-    
-
-
     <!-- https://purl.org/ozo/kik#VerzuimPeriode -->
 
     <owl:Class rdf:about="https://purl.org/ozo/kik#VerzuimPeriode">
-        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/vph#SocialDescription"/>
+        <rdfs:subClassOf rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#SocialDescription"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://purl.org/ozo/kik#eindDatum"/>
@@ -1617,12 +1708,12 @@ Het einde van deze periode kan beschreven worden met de laatste dag van de perio
     <!-- https://purl.org/ozo/kik#Vestiging -->
 
     <owl:Class rdf:about="https://purl.org/ozo/kik#Vestiging">
-        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/kik#Verblijfsobject"/>
+        <rdfs:subClassOf rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#AccomodativeObject"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#partOf"/>
+                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#vestigingVan"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="https://purl.org/ozo/vph#Business"/>
+                <owl:onClass rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Business"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1646,14 +1737,14 @@ Het einde van deze periode kan beschreven worden met de laatste dag van de perio
         <rdfs:subClassOf rdf:resource="https://purl.org/ozo/kik#WerkOvereenkomst"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#agreementOf"/>
+                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#heeftOpdrachtnemer"/>
                 <owl:someValuesFrom>
                     <owl:Class>
                         <owl:intersectionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://purl.org/ozo/vph#Human"/>
+                            <rdf:Description rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#Human"/>
                             <owl:Restriction>
-                                <owl:onProperty rdf:resource="https://purl.org/ozo/vph#hasRole"/>
-                                <owl:someValuesFrom rdf:resource="https://purl.org/ozo/vph#Volunteer"/>
+                                <owl:onProperty rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#hasRole"/>
+                                <owl:someValuesFrom rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Volunteer"/>
                             </owl:Restriction>
                         </owl:intersectionOf>
                     </owl:Class>
@@ -1668,63 +1759,51 @@ Het einde van deze periode kan beschreven worden met de laatste dag van de perio
     <!-- https://purl.org/ozo/kik#WerkOvereenkomst -->
 
     <owl:Class rdf:about="https://purl.org/ozo/kik#WerkOvereenkomst">
-        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/vph#Agreement"/>
+        <rdfs:subClassOf rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Agreement"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#agreementOf"/>
-                <owl:someValuesFrom rdf:resource="https://purl.org/ozo/vph#Business"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#agreementOf"/>
-                <owl:someValuesFrom rdf:resource="https://purl.org/ozo/vph#Human"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#agreementOf"/>
-                <owl:someValuesFrom>
-                    <owl:Class>
-                        <owl:intersectionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://purl.org/ozo/vph#Human"/>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="https://purl.org/ozo/vph#hasRole"/>
-                                <owl:someValuesFrom rdf:resource="https://purl.org/ozo/vph#Worker"/>
-                            </owl:Restriction>
-                        </owl:intersectionOf>
-                    </owl:Class>
-                </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#hasDescription"/>
-                <owl:someValuesFrom rdf:resource="https://purl.org/ozo/kik#ContractOmvang"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#hasDescription"/>
+                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#bijbehorendeFunctie"/>
                 <owl:someValuesFrom rdf:resource="https://purl.org/ozo/kik#Functie"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#hasDescription"/>
-                <owl:someValuesFrom rdf:resource="https://purl.org/ozo/kik#GewerktePeriode"/>
+                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#bijbehorendeVerzuimPeriode"/>
+                <owl:someValuesFrom rdf:resource="https://purl.org/ozo/kik#VerzuimPeriode"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#hasDescription"/>
-                <owl:someValuesFrom rdf:resource="https://purl.org/ozo/kik#ZiektePeriode"/>
+                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#bijbehorendeWerkPeriode"/>
+                <owl:someValuesFrom rdf:resource="https://purl.org/ozo/kik#GewerktePeriode"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://purl.org/ozo/kik#hasQuality"/>
                 <owl:someValuesFrom rdf:resource="https://purl.org/ozo/kik#Kwalificatieniveau"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#heeftContractOmvang"/>
+                <owl:someValuesFrom rdf:resource="https://purl.org/ozo/kik#ContractOmvang"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#heeftOpdrachtgever"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#Organization"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#hasRole"/>
+                                <owl:someValuesFrom rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Employer"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1764,7 +1843,7 @@ Het einde van deze periode kan beschreven worden met de laatste dag van de perio
         <rdfs:subClassOf rdf:resource="https://purl.org/ozo/kik#VerzuimPeriode"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#ZiektePercentage"/>
+                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#ziektePercentage"/>
                 <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1777,7 +1856,7 @@ Het einde van deze periode kan beschreven worden met de laatste dag van de perio
     <!-- https://purl.org/ozo/kik#Zorgdossier -->
 
     <owl:Class rdf:about="https://purl.org/ozo/kik#Zorgdossier">
-        <rdfs:subClassOf rdf:resource="https://purl.org/ozo/vph#Description"/>
+        <rdfs:subClassOf rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Description"/>
         <rdfs:label xml:lang="nl">Zorgdossier</rdfs:label>
     </owl:Class>
     
@@ -1788,7 +1867,7 @@ Het einde van deze periode kan beschreven worden met de laatste dag van de perio
     <owl:Class rdf:about="https://purl.org/ozo/kik#ZorgverlenerFunctie">
         <rdfs:subClassOf rdf:resource="https://purl.org/ozo/kik#Functie"/>
         <rdfs:label xml:lang="nl">Zorgverlener (functie)</rdfs:label>
-        <skos:definition xml:lang="nl">Zorgverlener (functie) is een verzamelbegrip van alle functies (zoals omschreven in een werkovereenkomst) die geclassificeerd kunenn worden als een zorgverlenende functie. 
+        <skos:definition xml:lang="nl">Zorgverlener (functie) is een verzamelbegrip van alle functies (zoals omschreven in een werkovereenkomst) die geclassificeerd kunnen worden als een zorgverlenende functie. 
 Met ander woorden: de persoon die een dergelijke functie uitoefent wordt geacht tenminste gedeeltelijk als taak te hebben beroepsmatig zorg te verlenen.
 Dit begrip behoeft nadere definitie.</skos:definition>
     </owl:Class>
@@ -2389,7 +2468,7 @@ Dit begrip behoeft nadere definitie.</skos:definition>
     <!-- https://purl.org/ozo/kik#DecubitusScale -->
 
     <owl:NamedIndividual rdf:about="https://purl.org/ozo/kik#DecubitusScale">
-        <rdf:type rdf:resource="https://purl.org/ozo/vph#MedicalClassificationSystem"/>
+        <rdf:type rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#MedicalClassificationSystem"/>
         <rdfs:label xml:lang="nl">Decubituscategorie</rdfs:label>
         <skos:exactMatch rdf:resource="http://decor.nictiz.nl/eoverdracht/e-overdracht-html-20141209T072156/voc-2.16.840.1.113883.2.4.3.11.22.209-2012-05-03T000000.html"/>
     </owl:NamedIndividual>
@@ -2705,10 +2784,10 @@ Dit begrip behoeft nadere definitie.</skos:definition>
     <!-- https://purl.org/ozo/kik#Uren_per_week_unit -->
 
     <owl:NamedIndividual rdf:about="https://purl.org/ozo/kik#Uren_per_week_unit">
-        <rdf:type rdf:resource="https://purl.org/ozo/vph#UnitOfWorkload"/>
-        <hasDenominatorQualityValue rdf:resource="https://purl.org/ozo/vph#Week"/>
-        <hasNumeratorQualityValue rdf:resource="https://purl.org/ozo/vph#Uur"/>
-        <hasNumericalValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</hasNumericalValue>
+        <rdf:type rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#UnitOfWorkload"/>
+        <hasDenominatorQualityValue rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Week"/>
+        <hasNumeratorQualityValue rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Uur"/>
+        <numeriekeWaarde rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</numeriekeWaarde>
         <rdfs:label xml:lang="nl">Uren per week</rdfs:label>
     </owl:NamedIndividual>
     
@@ -2820,10 +2899,10 @@ Dit begrip behoeft nadere definitie.</skos:definition>
     <!-- https://purl.org/ozo/kik#fte_36 -->
 
     <owl:NamedIndividual rdf:about="https://purl.org/ozo/kik#fte_36">
-        <rdf:type rdf:resource="https://purl.org/ozo/vph#UnitOfWorkload"/>
-        <hasDenominatorQualityValue rdf:resource="https://purl.org/ozo/vph#Week"/>
-        <hasNumeratorQualityValue rdf:resource="https://purl.org/ozo/vph#Uur"/>
-        <hasNumericalValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">36</hasNumericalValue>
+        <rdf:type rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#UnitOfWorkload"/>
+        <hasDenominatorQualityValue rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Week"/>
+        <hasNumeratorQualityValue rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Uur"/>
+        <numeriekeWaarde rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">36</numeriekeWaarde>
         <rdfs:label xml:lang="nl">FTE (36 uur per week)</rdfs:label>
         <skos:definition xml:lang="nl">Full Time Equivalent, waarbij fulltime wordt gedefinieerd als 36 uur per week.</skos:definition>
     </owl:NamedIndividual>
@@ -2833,10 +2912,10 @@ Dit begrip behoeft nadere definitie.</skos:definition>
     <!-- https://purl.org/ozo/kik#fte_40 -->
 
     <owl:NamedIndividual rdf:about="https://purl.org/ozo/kik#fte_40">
-        <rdf:type rdf:resource="https://purl.org/ozo/vph#UnitOfWorkload"/>
-        <hasDenominatorQualityValue rdf:resource="https://purl.org/ozo/vph#Week"/>
-        <hasNumeratorQualityValue rdf:resource="https://purl.org/ozo/vph#Uur"/>
-        <hasNumericalValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">40</hasNumericalValue>
+        <rdf:type rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#UnitOfWorkload"/>
+        <hasDenominatorQualityValue rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Week"/>
+        <hasNumeratorQualityValue rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Uur"/>
+        <numeriekeWaarde rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">40</numeriekeWaarde>
         <rdfs:label xml:lang="nl">FTE (40 uur per week)</rdfs:label>
     </owl:NamedIndividual>
     
@@ -3035,17 +3114,20 @@ zoals antibiotica, bloedproducten en preventieve medicatie.</skos:definition>
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    <rdf:Description rdf:about="https://purl.org/ozo/vph#AdministerTherapeuticSubstance">
+    <rdf:Description rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#AdministerTherapeuticSubstance">
         <rdfs:label xml:lang="nl">Toediening van medicatie</rdfs:label>
     </rdf:Description>
-    <rdf:Description rdf:about="https://purl.org/ozo/vph#Meeting">
+    <rdf:Description rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#Meeting">
         <rdfs:label xml:lang="nl">Bijeenkomst</rdfs:label>
         <skos:definition xml:lang="nl">Een bijeenkomst is een proces waarbij twee of meer cognitieve agents (digitaal) bijeenkomen met als doel te communiceren.</skos:definition>
     </rdf:Description>
-    <rdf:Description rdf:about="https://purl.org/ozo/vph#OccupationalRole">
+    <rdf:Description rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#OccupationalRole">
         <rdfs:label xml:lang="nl">Beroepsrol</rdfs:label>
     </rdf:Description>
-    <rdf:Description rdf:about="https://purl.org/ozo/vph#WoundTherapeuticIntervention">
+    <rdf:Description rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#Worker">
+        <rdfs:label xml:lang="nl">Medewerker</rdfs:label>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.zinl.nl/ontologies/VPH-domain-ontology#WoundTherapeuticIntervention">
         <rdfs:label xml:lang="nl">Wondbehandeling</rdfs:label>
     </rdf:Description>
 </rdf:RDF>
