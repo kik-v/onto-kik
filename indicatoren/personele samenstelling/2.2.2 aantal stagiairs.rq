@@ -6,12 +6,12 @@ SELECT (COUNT(DISTINCT(?stagiaire)) AS ?aantal_stagiaires)
 
 WHERE {
     #Definieer periode
-    BIND("2018-01-01"^^xsd:date AS ?start_periode)
-    BIND("2018-12-31"^^xsd:date AS ?eind_periode)
+    BIND("2020-01-01"^^xsd:date AS ?start_periode)
+    BIND("2020-12-31"^^xsd:date AS ?eind_periode)
     
     #Selecteer alle stageovereenkomsten
     ?stagiaire a vph:Human ;
-               kik:hasAgreement ?stageovereenkomst .
+               kik:heeftWerkOvereenkomst ?stageovereenkomst .
     ?stageovereenkomst a kik:StageOvereenkomst;
                                kik:startDatum ?start_overeenkomst ;
                                kik:eindDatum ?eind_overeenkomst .
