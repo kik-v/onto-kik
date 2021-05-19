@@ -7,25 +7,22 @@ SELECT (SUM(?omvang_corr) AS ?teller) (COUNT (DISTINCT(?persoon)) AS ?noemer) (?
 
 WHERE {
     #definieer periode waarin overeenkomst geldig moet zijn en de eenheid waarin gerapporteerd wordt
-    BIND("2017-01-01"^^xsd:date AS ?start_periode)
-    BIND("2017-12-31"^^xsd:date AS ?eind_periode)
-    BIND(kik:fte_40 AS ?gevraagde_eenheid)
+    BIND("2020-01-01"^^xsd:date AS ?start_periode)
+    BIND("2020-12-31"^^xsd:date AS ?eind_periode)
+    BIND(kik:fte_36 AS ?gevraagde_eenheid)
     BIND ((360 * (YEAR(?eind_periode) - YEAR(?start_periode))) +
         (30 * (MONTH(?eind_periode) - MONTH(?start_periode))) +
         IF((DAY(?eind_periode) - DAY(?start_periode)) < 29, (DAY(?eind_periode) - DAY(?start_periode)), 29) + 1
         AS ?dagen_periode)
     
     #selecteer alle arbeids- en oproepovereenkomsten met een zorgverlenerfunctie
-    { ?arbeidsovereenkomst a kik:ArbeidsOvereenkomst } UNION
-    { ?arbeidsovereenkomst a kik:OproepOvereenkomst }
-    ?arbeidsovereenkomst kik:hasDescription/a kik:ZorgverlenerFunctie ;
-                         kik:hasDescription ?omvang ;
-                         ^kik:hasAgreement ?persoon .
-    ?persoon a vph:Human .
+    ?arbeidsovereenkomst a kik:ArbeidsOvereenkomst .
+    ?arbeidsovereenkomst kik:bijbehorendeFunctie/a kik:Functie ;
+                         kik:heeftContractOmvang ?omvang ;
+                         kik:heeftOpdrachtnemer ?persoon .
     
     #bepaal van alle arbeidsovereenkomsten de omvang
-    ?omvang a kik:ContractOmvang ;
-            kik:hasNumericalValue ?waarde ;
+    ?omvang kik:numeriekeWaarde ?waarde ;
             kik:hasUnitOfMeasure ?eenheid ;
             kik:startDatum ?start_omvang .
     OPTIONAL {?omvang kik:eindDatum ?eind_omvang}
@@ -45,10 +42,10 @@ WHERE {
     BIND(?dagen_omvang_corr/?dagen_periode AS ?correctie_periode)
     
     #correct voor verschillende eenheden
-    ?gevraagde_eenheid kik:hasNumericalValue ?gevraagde_eenheid_waarde ;
+    ?gevraagde_eenheid kik:numeriekeWaarde ?gevraagde_eenheid_waarde ;
                                     kik:hasDenominatorQualityValue ?noemer_eenheid ;
                                     kik:hasNumeratorQualityValue ?teller_eenheid .
-    ?eenheid kik:hasNumericalValue ?eenheid_waarde ;
+    ?eenheid kik:numeriekeWaarde ?eenheid_waarde ;
                   kik:hasDenominatorQualityValue ?noemer_eenheid ;
                   kik:hasNumeratorQualityValue ?teller_eenheid .
     BIND(?eenheid_waarde/?gevraagde_eenheid_waarde AS ?correctie_factor)
