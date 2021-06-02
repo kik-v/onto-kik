@@ -286,18 +286,6 @@ Voorbeeld: een WLZ indicatie vormt de input voor het zorgproces van een client.<
     
 
 
-    <!-- https://purl.org/ozo/kik#hasQuality -->
-
-    <owl:ObjectProperty rdf:about="https://purl.org/ozo/kik#hasQuality">
-        <owl:inverseOf rdf:resource="https://purl.org/ozo/kik#qualityOf"/>
-        <rdfs:domain rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#SpatioTemporalParticular"/>
-        <rdfs:range rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Quality"/>
-        <rdfs:label xml:lang="nl">heeft kwaliteit</rdfs:label>
-        <skos:definition xml:lang="nl">Verwijst naar een kwaliteit.</skos:definition>
-    </owl:ObjectProperty>
-    
-
-
     <!-- https://purl.org/ozo/kik#hasQualityValue -->
 
     <owl:ObjectProperty rdf:about="https://purl.org/ozo/kik#hasQualityValue">
@@ -368,6 +356,18 @@ Voorbeeld: een zorgdossier heeft_onderwerp client waarover het dossier gaat.</sk
     
 
 
+    <!-- https://purl.org/ozo/kik#heeftKwaliteit -->
+
+    <owl:ObjectProperty rdf:about="https://purl.org/ozo/kik#heeftKwaliteit">
+        <owl:inverseOf rdf:resource="https://purl.org/ozo/kik#kwaliteitVan"/>
+        <rdfs:domain rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#SpatioTemporalParticular"/>
+        <rdfs:range rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Quality"/>
+        <rdfs:label xml:lang="nl">heeft kwaliteit</rdfs:label>
+        <skos:definition xml:lang="nl">Verwijst naar een kwaliteit.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
     <!-- https://purl.org/ozo/kik#heeftOpdrachtgever -->
 
     <owl:ObjectProperty rdf:about="https://purl.org/ozo/kik#heeftOpdrachtgever">
@@ -422,6 +422,16 @@ Voorbeeld: een zorgdossier heeft_onderwerp client waarover het dossier gaat.</sk
     
 
 
+    <!-- https://purl.org/ozo/kik#kwaliteitVan -->
+
+    <owl:ObjectProperty rdf:about="https://purl.org/ozo/kik#kwaliteitVan">
+        <rdfs:domain rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Quality"/>
+        <rdfs:label xml:lang="nl">kwaliteit van</rdfs:label>
+        <skos:definition xml:lang="nl">Verwijst naar de houder van een zekere kwaliteit.</skos:definition>
+    </owl:ObjectProperty>
+    
+
+
     <!-- https://purl.org/ozo/kik#locatedIn -->
 
     <owl:ObjectProperty rdf:about="https://purl.org/ozo/kik#locatedIn">
@@ -460,16 +470,6 @@ Voorbeeld: een zorgdossier heeft_onderwerp client waarover het dossier gaat.</sk
         <rdfs:label xml:lang="nl">neemt deel in</rdfs:label>
         <skos:definition xml:lang="nl">Een relatie tussen een endurant en een proces (perdurant) waarbij de endurant op enige manier betrokken is in dat proces.</skos:definition>
         <skos:exactMatch rdf:resource="http://purl.obolibrary.org/obo/RO_0000056"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://purl.org/ozo/kik#qualityOf -->
-
-    <owl:ObjectProperty rdf:about="https://purl.org/ozo/kik#qualityOf">
-        <rdfs:domain rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#Quality"/>
-        <rdfs:label xml:lang="nl">kwaliteit van</rdfs:label>
-        <skos:definition xml:lang="nl">Verwijst naar de houder van een zekere kwaliteit.</skos:definition>
     </owl:ObjectProperty>
     
 
@@ -1222,7 +1222,7 @@ Meestal volgens de Decubituscategorie codelijst volgens de V&amp;VN Wondzorg def
         <rdfs:subClassOf rdf:resource="http://www.zinl.nl/ontologies/VPH-domain-ontology#PathologicAnatomicalEntity"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#hasQuality"/>
+                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#heeftKwaliteit"/>
                 <owl:someValuesFrom rdf:resource="https://purl.org/ozo/kik#DecubitusGraad"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1780,14 +1780,14 @@ Het einde van deze periode kan beschreven worden met de laatste dag van de perio
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#hasQuality"/>
-                <owl:someValuesFrom rdf:resource="https://purl.org/ozo/kik#Kwalificatieniveau"/>
+                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#heeftContractOmvang"/>
+                <owl:someValuesFrom rdf:resource="https://purl.org/ozo/kik#ContractOmvang"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#heeftContractOmvang"/>
-                <owl:someValuesFrom rdf:resource="https://purl.org/ozo/kik#ContractOmvang"/>
+                <owl:onProperty rdf:resource="https://purl.org/ozo/kik#heeftKwaliteit"/>
+                <owl:someValuesFrom rdf:resource="https://purl.org/ozo/kik#Kwalificatieniveau"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -2667,6 +2667,16 @@ Dit begrip behoeft nadere definitie.</skos:definition>
 2) Beroepsbeoefenaars in de individuele gezondheidszorg, die in opdracht van de arts handelingen verrichten op het gebied van observatie, begeleiding, verpleging en verzorging van zieken.</skos:definition>
         <vph:definitionSource xml:lang="nl">Gegevenswoordenboek</vph:definitionSource>
         <vph:editorialDefinition xml:lang="nl">Toevoeging: verpleegkundigen die een opleiding verpleegkundige MBO-niveau 4 hebben gevolgd.</vph:editorialDefinition>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://purl.org/ozo/kik#Kwalificatieniveau_5 -->
+
+    <owl:NamedIndividual rdf:about="https://purl.org/ozo/kik#Kwalificatieniveau_5">
+        <rdf:type rdf:resource="https://purl.org/ozo/kik#ODBKwalificatie"/>
+        <rdfs:comment xml:lang="nl">In ODB niet meer in gebruik, maar opgenomen om &apos;oude&apos; gegevens te kunnen verwerken.</rdfs:comment>
+        <rdfs:label xml:lang="nl">Kwalificatieniveau 5</rdfs:label>
     </owl:NamedIndividual>
     
 
